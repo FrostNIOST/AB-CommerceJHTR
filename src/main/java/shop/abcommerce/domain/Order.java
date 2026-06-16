@@ -18,7 +18,7 @@ import shop.abcommerce.domain.enumeration.State;
  */
 @Document(collection = "order")
 @SuppressWarnings("common-java:DuplicatedBlocks")
-public class Order implements Serializable {
+public class Order extends AbstractAuditingEntity implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;

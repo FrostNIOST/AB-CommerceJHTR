@@ -13,7 +13,7 @@ import shop.abcommerce.domain.enumeration.State;
  */
 @Document(collection = "document_type")
 @SuppressWarnings("common-java:DuplicatedBlocks")
-public class DocumentType implements Serializable {
+public class DocumentType extends AbstractAuditingEntity implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;

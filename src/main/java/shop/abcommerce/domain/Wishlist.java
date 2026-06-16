@@ -18,7 +18,7 @@ import shop.abcommerce.domain.enumeration.State;
  */
 @Document(collection = "wishlist")
 @SuppressWarnings("common-java:DuplicatedBlocks")
-public class Wishlist implements Serializable {
+public class Wishlist extends AbstractAuditingEntity implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
