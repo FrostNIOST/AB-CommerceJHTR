@@ -1,0 +1,52 @@
+{
+  "annotations": {
+    "changelogDate": "20260616142228"
+  },
+  "applications": ["abcommerce"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "subCategoryName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength", "maxlength"],
+      "fieldValidateRulesMaxlength": "70",
+      "fieldValidateRulesMinlength": "5"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "fieldValidateRules": ["minlength", "maxlength"],
+      "fieldValidateRulesMaxlength": "200",
+      "fieldValidateRulesMinlength": "10"
+    },
+    {
+      "fieldName": "state",
+      "fieldType": "State",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "ACTIVE (Active),INACTIVE (Inactive)"
+    }
+  ],
+  "name": "SubCategory",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "productName",
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "subCategory",
+      "relationshipName": "products",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "categoryName",
+      "otherEntityName": "category",
+      "otherEntityRelationshipName": "subCategories",
+      "relationshipName": "category",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

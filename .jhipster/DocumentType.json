@@ -1,0 +1,32 @@
+{
+  "annotations": {
+    "changelogDate": "20260616141828"
+  },
+  "applications": ["abcommerce"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "cod",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength", "unique"],
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "documentType",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength", "unique"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "state",
+      "fieldType": "State",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "ACTIVE (Active),INACTIVE (Inactive)"
+    }
+  ],
+  "name": "DocumentType",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

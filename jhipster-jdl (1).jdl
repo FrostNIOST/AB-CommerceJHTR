@@ -1,0 +1,205 @@
+application{
+	config{
+    baseName abcommerce
+    applicationType monolith
+    packageName  shop.abcommerce
+    authenticationType jwt
+    databaseType  mongodb
+    devDatabaseType  mongodb
+    cacheProvider no
+    buildTool maven
+    clientFramework react
+    enableTranslation false
+    nativeLanguage es
+    languages [es]
+    websocket false
+    testFrameworks [cucumber]
+    //entitySuffix False
+    jhiPrefix project
+    reactive false
+    serverPort 8080
+    searchEngine false
+    clientTheme cyborg
+    clientThemeVariant dark
+    }
+    entities *
+}
+enum State{
+ACTIVE(Active),
+INACTIVE(Inactive)
+}
+
+enum PaymentStatus{
+PENDING(Pending),
+PAID(Paid),
+UNPAID(Unpaid)
+}
+
+enum OrderStatus{
+    PENDING (Pending)
+    CONFIRMED (Confirmed)
+    PROCESSING (Processing)
+    SHIPPED (Shipped)
+    DELIVERED (Delivered)
+    CANCELLED (Canceled)
+}
+
+entity DocumentType{
+    cod String required maxlength(20) unique
+    documentType String required maxlength(100) unique
+    state State required
+}
+
+entity Address{
+    adress String required minlength(10) maxlength(200)
+    city String required maxlength(100)
+	department String maxlength(100)
+	postalCode String maxlength(20)
+    state State required
+}
+
+entity AccountU{
+    documentNumber String required maxlength(20) unique
+    firstName String required maxlength(50)
+    secondName String maxlength(50)
+    firstLastName String required maxlength(50)
+    secondLastName String maxlength(50)
+}
+
+entity Category{
+    categoryName String required minlength(5) maxlength(70)
+    description String minlength(10) maxlength(200)
+    state State required
+}
+
+entity SubCategory{
+    subCategoryName String required minlength(5) maxlength(70)
+    description String minlength(10) maxlength(200)
+    state State required
+}
+
+entity Product{
+    productName String required minlength(5) maxlength(70)
+    description String minlength(10) maxlength(200)
+    purchasePrice Double required min(1)
+    sellingPrice Double required min(1)
+    imgProduct ImageBlob
+    slug String required minlength(3) maxlength(150) unique
+    stock Integer required min(0)
+    state State required
+}
+
+entity Wishlist{
+    state State required
+    updateAt Instant required
+}
+
+entity Cart{
+    state State required
+}
+
+entity CartItem{
+    quantity Integer required min(1)
+}
+
+entity Order{
+    orderNumber String required unique
+    subtotal Double required min(0)
+    subtotalIva Double required min(0)
+    shippingCost Double required min(0)
+    total Double required min(1)
+    status OrderStatus required
+    state State required
+}
+
+entity OrderItem{
+    productName String required
+    sellingPrice Double required min(1)
+    quantity Integer required min(1)
+    subtotal Double required min(1)
+}
+
+entity PaymentMethod{
+    namePaymentMethod String required maxlength(20) unique
+    cod String required maxlength(20) unique
+    description String maxlength(100)
+    type String required
+    apiKey String
+    endpoint String
+    state State required
+}
+
+entity Invoice{
+    pref String
+    invoiceNumber String required unique
+    paymentStatus PaymentStatus required
+    refTransaction String
+    state State required
+}
+relationship OneToMany {
+
+    Category{subCategories(subCategoryName)}
+        to SubCategory{category(categoryName) required}
+
+    SubCategory{products(productName)}
+        to Product{subCategory(subCategoryName) required}
+
+    AccountU{addresses(adress)}
+        to Address{account required}
+
+    AccountU{orders(orderNumber)}
+        to Order{account required}
+
+    Order{items}
+        to OrderItem{order required}
+}
+
+relationship ManyToOne {
+
+    CartItem{product(productName) required}
+        to Product
+
+    OrderItem{product(productName) required}
+        to Product
+        
+    Order{paymentMethod(namePaymentMethod) required}
+        to PaymentMethod
+
+    AccountU{documentType(documentType) required}
+        to DocumentType
+
+    Invoice{order(orderNumber) required}
+        to Order
+
+    Order{shippingAddress(adress) required}
+        to Address
+
+}
+
+relationship OneToOne {
+
+    AccountU{user(login) required}
+        to User with builtInEntity
+
+    Wishlist{account required}
+        to AccountU
+
+    Cart{account required}
+        to AccountU
+
+}
+
+relationship ManyToMany {
+
+    Wishlist{products(productName)}
+        to Product{wishlists}
+        
+    Cart{items}
+        to CartItem{cart required}
+
+}
+
+
+dto * with mapstruct
+service * with serviceImpl
+paginate * with pagination

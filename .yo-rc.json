@@ -1,0 +1,42 @@
+{
+  "generator-jhipster": {
+    "applicationType": "monolith",
+    "authenticationType": "jwt",
+    "baseName": "abcommerce",
+    "buildTool": "maven",
+    "cacheProvider": "no",
+    "clientFramework": "react",
+    "clientTheme": "cyborg",
+    "clientThemeVariant": "dark",
+    "databaseType": "mongodb",
+    "devDatabaseType": "mongodb",
+    "enableTranslation": false,
+    "entities": [
+      "DocumentType",
+      "Address",
+      "AccountU",
+      "Category",
+      "SubCategory",
+      "Product",
+      "Wishlist",
+      "Cart",
+      "CartItem",
+      "Order",
+      "OrderItem",
+      "PaymentMethod",
+      "Invoice"
+    ],
+    "jhiPrefix": "project",
+    "jhipsterVersion": "9.1.0",
+    "jwtSecretKey": "NTY4ZGU5Y2QyZWQyZTU3ZjE0ZjBhMDRmOWIxODQ2NGMxNWZjYTdkNDM3NThiZDRhMzQ1Mzc3NjYwODM3MzdhOWUwYzM0ZjNjYjJiMzFmZTM0MDQyYTE3NmJjMjEyOGE1OTMyMzczODdiYjU1MmEwMWVkODFjMTNlNzQxYzBmYmQ=",
+    "languages": ["es"],
+    "lastLiquibaseTimestamp": 1781620228000,
+    "nativeLanguage": "es",
+    "packageName": "shop.abcommerce",
+    "reactive": false,
+    "searchEngine": false,
+    "serverPort": "8080",
+    "testFrameworks": ["cucumber"],
+    "websocket": false
+  }
+}

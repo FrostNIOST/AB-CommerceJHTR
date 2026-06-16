@@ -1,0 +1,87 @@
+{
+  "annotations": {
+    "changelogDate": "20260616142728"
+  },
+  "applications": ["abcommerce"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "orderNumber",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "subtotal",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "subtotalIva",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "shippingCost",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "total",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "1"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "OrderStatus",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "PENDING (Pending),CONFIRMED (Confirmed),PROCESSING (Processing),SHIPPED (Shipped),DELIVERED (Delivered),CANCELLED (Canceled)"
+    },
+    {
+      "fieldName": "state",
+      "fieldType": "State",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "ACTIVE (Active),INACTIVE (Inactive)"
+    }
+  ],
+  "name": "Order",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "orderItem",
+      "otherEntityRelationshipName": "order",
+      "relationshipName": "items",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "namePaymentMethod",
+      "otherEntityName": "paymentMethod",
+      "relationshipName": "paymentMethod",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "adress",
+      "otherEntityName": "address",
+      "relationshipName": "shippingAddress",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "accountU",
+      "otherEntityRelationshipName": "orders",
+      "relationshipName": "account",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

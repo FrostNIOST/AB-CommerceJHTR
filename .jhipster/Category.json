@@ -1,0 +1,43 @@
+{
+  "annotations": {
+    "changelogDate": "20260616142128"
+  },
+  "applications": ["abcommerce"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "categoryName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength", "maxlength"],
+      "fieldValidateRulesMaxlength": "70",
+      "fieldValidateRulesMinlength": "5"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "fieldValidateRules": ["minlength", "maxlength"],
+      "fieldValidateRulesMaxlength": "200",
+      "fieldValidateRulesMinlength": "10"
+    },
+    {
+      "fieldName": "state",
+      "fieldType": "State",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "ACTIVE (Active),INACTIVE (Inactive)"
+    }
+  ],
+  "name": "Category",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "subCategoryName",
+      "otherEntityName": "subCategory",
+      "otherEntityRelationshipName": "category",
+      "relationshipName": "subCategories",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

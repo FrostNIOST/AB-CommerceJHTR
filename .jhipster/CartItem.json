@@ -1,0 +1,37 @@
+{
+  "annotations": {
+    "changelogDate": "20260616142628"
+  },
+  "applications": ["abcommerce"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "quantity",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "1"
+    }
+  ],
+  "name": "CartItem",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "productName",
+      "otherEntityName": "product",
+      "relationshipName": "product",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "cart",
+      "otherEntityRelationshipName": "items",
+      "relationshipName": "cart",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-many",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

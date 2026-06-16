@@ -1,0 +1,48 @@
+{
+  "annotations": {
+    "changelogDate": "20260616143028"
+  },
+  "applications": ["abcommerce"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "pref",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "invoiceNumber",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "paymentStatus",
+      "fieldType": "PaymentStatus",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "PENDING (Pending),PAID (Paid),UNPAID (Unpaid)"
+    },
+    {
+      "fieldName": "refTransaction",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "state",
+      "fieldType": "State",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "ACTIVE (Active),INACTIVE (Inactive)"
+    }
+  ],
+  "name": "Invoice",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "orderNumber",
+      "otherEntityName": "order",
+      "relationshipName": "order",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

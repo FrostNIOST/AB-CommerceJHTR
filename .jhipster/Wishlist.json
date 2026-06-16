@@ -1,0 +1,41 @@
+{
+  "annotations": {
+    "changelogDate": "20260616142428"
+  },
+  "applications": ["abcommerce"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "state",
+      "fieldType": "State",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "ACTIVE (Active),INACTIVE (Inactive)"
+    },
+    {
+      "fieldName": "updateAt",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Wishlist",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "accountU",
+      "relationshipName": "account",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "productName",
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "wishlists",
+      "relationshipName": "products",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}
