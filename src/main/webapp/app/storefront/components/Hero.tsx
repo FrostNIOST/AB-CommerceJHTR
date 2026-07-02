@@ -8,12 +8,12 @@ import 'swiper/css/pagination';
 const Hero: React.FC = () => {
   // ✅ Rutas absolutas desde la raíz del webapp
   const categories = [
-    { name: 'Celulares', icon: '/Image/icon-phone.png' },
-    { name: 'Laptops', icon: '/Image/icon-laptops.png' },
-    { name: 'Videojuegos', icon: '/Image/icon-games.png' },
-    { name: 'Televisiones', icon: '/Image/icon-television.png' },
-    { name: 'Parlantes', icon: '/Image/icon-speaker.png' },
-    { name: 'Audífonos', icon: '/Image/icon-headphone.png' },
+    { name: 'Celulares', icon: '/content/images/icon-phone.png' },
+    { name: 'Laptops', icon: '/content/images/icon-laptops.png' },
+    { name: 'Videojuegos', icon: '/content/images/icon-games.png' },
+    { name: 'Televisiones', icon: '/content/images/icon-television.png' },
+    { name: 'Parlantes', icon: '/content/images/icon-speaker.png' },
+    { name: 'Audífonos', icon: '/content/images/icon-headphone.png' },
   ];
 
   const slides = [
@@ -25,7 +25,7 @@ const Hero: React.FC = () => {
       subtitle: 'mira las ofertas',
       description: 'Envíos gratis',
       price: '$499.99',
-      image: '/Image/slide1-ipad.png',
+      image: '/content/images/slide1-ipad.png',
     },
     {
       id: 2,
@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
       subtitle: 'Increíbles descuentos',
       description: 'Por',
       price: '$399.99',
-      image: '/Image/slide1-watches.png',
+      image: '/content/images/slide1-watches.png',
     },
     {
       id: 3,
@@ -45,7 +45,7 @@ const Hero: React.FC = () => {
       subtitle: '',
       description: '',
       price: '',
-      image: '/Image/slide1-iphone.png',
+      image: '/content/images/slide1-iphone.png',
     },
   ];
 
