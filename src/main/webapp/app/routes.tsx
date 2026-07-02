@@ -6,7 +6,7 @@ import Activate from 'app/modules/account/activate/activate';
 import PasswordResetFinish from 'app/modules/account/password-reset/finish/password-reset-finish';
 import PasswordResetInit from 'app/modules/account/password-reset/init/password-reset-init';
 import Register from 'app/modules/account/register/register';
-import Home from 'app/modules/home/home';
+// import Home from 'app/modules/home/home';
 import Login from 'app/modules/login/login';
 import Logout from 'app/modules/login/logout';
 import PrivateRoute from 'app/shared/auth/private-route';
@@ -26,7 +26,7 @@ const AppRoutes = () => {
     <div className="view-routes">
       <Suspense fallback={loading}>
         <ErrorBoundaryRoutes>
-          <Route index element={<Home />} />
+          <Route index element={<StorefrontRoutes />} />
           <Route path="login" element={<Login />} />
           <Route path="logout" element={<Logout />} />
           <Route path="/tienda/*" element={<StorefrontRoutes />} />
